@@ -14,14 +14,14 @@ port_list=()
 #instruction of connection for remote server
 host_list[${#host_list[@]}]=""
 username_list[${#username_list[@]}]=""
-password_list[${password_list[@]}]=""
+password_list[${#password_list[@]}]=""
 port_list[${#port_list[@]}]=""
 msg_list[${#msg_list[@]}]=""
 
 #e.g
 #host_list[${#host_list[@]}]="xxx.xx.com"
 #username_list[${#username_list[@]}]="username"
-#password_list[${password_list[@]}]="password"
+#password_list[${#password_list[@]}]="password"
 #port_list[${#port_list[@]}]="22"
 #msg_list[${#msg_list[@]}]="测试机"
 
