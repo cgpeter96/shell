@@ -28,8 +28,9 @@ port=${port_list[$choose_idx]}
 echo "${username}@${ip}:$port"
 
 expect -c "spawn ssh -p $port  $username@$ip
+# note login .. 这行用于匹配无需输入密码的，但是提前登录后需要有login相关的提示，才能工作。
 expect {
-\"*login*\" { interact
+\"*login*\" { interact }
 \"*yes/no*\" { send \"yes\r\";exp_continue }
 \"*password:\" { send \"$password\r\";interact }
 }"
