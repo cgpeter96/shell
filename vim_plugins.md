@@ -1,6 +1,13 @@
-## vim 配置说明手册
+# vim 配置说明手册
 
-## 插件管理
+```
+git clone https://github.com/junegunn/vim-plug
+```
+
+具体参考`install_vim_plugins.sh`
+
+
+## 插件管理(已废弃)
 
 ```
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
