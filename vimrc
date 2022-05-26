@@ -17,6 +17,7 @@ Plug 'yegappan/taglist'
 
 "轻量级的看情况用
 "Plug 'skywind3000/vim-auto-popmenu'
+"Plug 'skywind3000/vim-dict'
 
 "异步运行
 "Plug 'skywind3000/asyncrun.vim'
@@ -32,6 +33,17 @@ call plug#end()
 let g:seoul256_background = 236
 colo seoul256
 
+"========精简补全配置===============
+" enable this plugin for filetypes, '*' for all files.
+"let g:apc_enable_ft = {'text':1, 'markdown':1, 'php':1}
+let g:apc_enable_ft = {'*':1}
+" source for dictionary, current or other loaded buffers, see ':help cpt'
+set cpt=.,k,w,b
+" don't select the first item.
+set completeopt=menu,menuone,noselect
+
+" suppress annoy messages.
+set shortmess+=c
 
 "==============YCM配置======================
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
@@ -55,11 +67,11 @@ let g:ycm_cache_omnifunc=0
 let g:ycm_complete_in_strings = 1
 "离开插入模式后自动关闭预览窗口"
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-"上下左右键行为"
-inoremap <expr> <Down>     pumvisible() ? '\<C-n>' : '\<Down>'
-inoremap <expr> <Up>       pumvisible() ? '\<C-p>' : '\<Up>'
-inoremap <expr> <PageDown> pumvisible() ? '\<PageDown>\<C-p>\<C-n>' : '\<PageDown>'
-inoremap <expr> <PageUp>   pumvisible() ? '\<PageUp>\<C-p>\<C-n>' : '\<PageUp>'
+"上下左右键行为,有点坑"
+"inoremap <expr> <Down>     pumvisible() ? '\<C-n>' : '\<Down>'
+"inoremap <expr> <Up>       pumvisible() ? '\<C-p>' : '\<Up>'
+"inoremap <expr> <PageDown> pumvisible() ? '\<PageDown>\<C-p>\<C-n>' : '\<PageDown>'
+"inoremap <expr> <PageUp>   pumvisible() ? '\<PageUp>\<C-p>\<C-n>' : '\<PageUp>'
 
 "===========nerdtree配置================
 map <F3> :NERDTreeMirror<CR>
