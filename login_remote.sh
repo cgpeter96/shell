@@ -1,7 +1,9 @@
 #!/bin/bash
 # 用于管理快速登录服务器，减少显示输入密码
 # 依赖：expect,这个工具需要提前安装 yum install expect or apt install expect
+#必须填写
 default_username=""
+#必须填写
 default_password=""
 default_port=22
 msg_list=()
@@ -12,13 +14,18 @@ port_list=()
 
 
 #instruction of connection for remote server
+#服务器地址
 host_list[${#host_list[@]}]=""
+#账号
 username_list[${#username_list[@]}]=""
+#密码
 password_list[${#password_list[@]}]=""
+#端口号
 port_list[${#port_list[@]}]=""
+#备注信息
 msg_list[${#msg_list[@]}]=""
 
-#e.g
+#e.g， 只是测试可以把下面注释去掉。
 #host_list[${#host_list[@]}]="xxx.xx.com"
 #username_list[${#username_list[@]}]="username"
 #password_list[${#password_list[@]}]="password"
