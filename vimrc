@@ -1,4 +1,3 @@
-" 可以参考 https://github.com/bilibili/vim-vide
 " Plugins will be downloaded under the specified directory.
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
@@ -10,15 +9,22 @@ Plug 'junegunn/seoul256.vim'
 " 目录树
 Plug 'scrooloose/nerdtree'
 " YCM代码补全
-Plug 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
+
 " taglist,记得安装ctags&cscope
 Plug 'yegappan/taglist'
 
-"===== TODO插件,未来可以尝试====
-
 "轻量级的看情况用
-"Plug 'skywind3000/vim-auto-popmenu'
-"Plug 'skywind3000/vim-dict'
+Plug 'skywind3000/vim-auto-popmenu'
+Plug 'skywind3000/vim-dict'
+"代码格式化
+Plug 'rhysd/vim-clang-format'
+
+"========go 插件========
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'volgar1x/vim-gocode'
+
+"===== TODO插件,未来可以尝试====
 
 "异步运行
 "Plug 'skywind3000/asyncrun.vim'
@@ -34,10 +40,14 @@ call plug#end()
 let g:seoul256_background = 236
 colo seoul256
 
+"=========golang配置===============
+"gocode呼出代码提示
+imap <F6> <C-x><C-o>
+
 "========精简补全配置===============
 " enable this plugin for filetypes, '*' for all files.
 "let g:apc_enable_ft = {'text':1, 'markdown':1, 'php':1}
-let g:apc_enable_ft = {'*':1}
+let g:apc_enable_ft = {'text':1,'c':1,'markdownn':1,'cpp':1,'cc':1}
 " source for dictionary, current or other loaded buffers, see ':help cpt'
 set cpt=.,k,w,b
 " don't select the first item.
@@ -46,29 +56,29 @@ set completeopt=menu,menuone,noselect
 " suppress annoy messages.
 set shortmess+=c
 
-"==============YCM配置======================
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-"打开vim时不再询问是否加载ycm_extra_conf.py配置"
-let g:ycm_confirm_extra_conf=0
-"ycm python解释器
-let g:ycm_path_to_python_interpreter='/usr/bin/python3'
-let g:ycm_key_invoke_completion = '<c-z>'
-"是否开启语义补全"
-let g:ycm_seed_identifiers_with_syntax=1
-"是否在注释中也开启补全"
-"let g:ycm_complete_in_comments=1
-let g:ycm_collect_identifiers_from_comments_and_strings = 0
-"开始补全的字符数"
-let g:ycm_min_num_of_chars_for_completion=2
-"补全后自动关机预览窗口"
-let g:ycm_autoclose_preview_window_after_completion=1
-" 禁止缓存匹配项,每次都重新生成匹配项"
-let g:ycm_cache_omnifunc=0
-"字符串中也开启补全"
-let g:ycm_complete_in_strings = 1
-"离开插入模式后自动关闭预览窗口"
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-"上下左右键行为,有点坑"
+""==============YCM配置======================
+"let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+""打开vim时不再询问是否加载ycm_extra_conf.py配置"
+"let g:ycm_confirm_extra_conf=0
+""ycm python解释器
+"let g:ycm_path_to_python_interpreter='/usr/bin/python3'
+"let g:ycm_key_invoke_completion = '<c-z>'
+""是否开启语义补全"
+"let g:ycm_seed_identifiers_with_syntax=1
+""是否在注释中也开启补全"
+""let g:ycm_complete_in_comments=1
+"let g:ycm_collect_identifiers_from_comments_and_strings = 0
+""开始补全的字符数"
+"let g:ycm_min_num_of_chars_for_completion=2
+""补全后自动关机预览窗口"
+"let g:ycm_autoclose_preview_window_after_completion=1
+"" 禁止缓存匹配项,每次都重新生成匹配项"
+"let g:ycm_cache_omnifunc=0
+""字符串中也开启补全"
+"let g:ycm_complete_in_strings = 1
+""离开插入模式后自动关闭预览窗口"
+"autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+""上下左右键行为"
 "inoremap <expr> <Down>     pumvisible() ? '\<C-n>' : '\<Down>'
 "inoremap <expr> <Up>       pumvisible() ? '\<C-p>' : '\<Up>'
 "inoremap <expr> <PageDown> pumvisible() ? '\<PageDown>\<C-p>\<C-n>' : '\<PageDown>'
@@ -91,14 +101,21 @@ let NERDTreeDirArrows = 1
 
 "Taglist配置
 map <F2> :Tlist <CR> 
+" ctags
+set tags=tags;
+set autochdir
+let Tlist_Ctags_Cmd='/usr/bin/ctags'
+
+
 
 "============通用配置===========
 set nocompatible    " 关闭兼容模式
+set backspace=indent,eol,start
 syntax enable       " 语法高亮
 "光标所在行列
 set cursorline
 "set cursorcolumn
-
+filetype on
 
 "控制
 set fileencodings=utf-8,gbk  "使用utf-8或gbk编码方式
@@ -125,5 +142,7 @@ set shiftwidth=4              "自动缩进的距离,也是平移字符的距离
 set tabstop=4                "tab键对应的空格数
 set autoindent                "自动缩进
 set smartindent              "智能缩进
-cs add /home/peter/cpp_code/test/cscope.out
+
+"cs add /home/peter/cpp_code/test/cscope.out
+
 
