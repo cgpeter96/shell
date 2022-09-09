@@ -1,5 +1,7 @@
 " 可以参考 https://github.com/bilibili/vim-vide
 " Plugins will be downloaded under the specified directory.
+" 使用coc需要安装nodejs，不赘述了，google下
+" 安装完noode 安装yarn就行
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
 " Declare the list of plugins.
