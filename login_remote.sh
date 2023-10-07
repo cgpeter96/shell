@@ -1,9 +1,9 @@
 #!/bin/bash
-# 用于管理快速登录服务器，减少显示输入密码
-# 依赖：expect,这个工具需要提前安装 yum install expect or apt install expect
-#必须填写
+# @author: cgpeter96
+# @function 用于快速登录服务器，减少输入密码次数 (Used to quickly log in to the server and reduce the number of password entries)
+# @dependency：expect(must), yum install expect or apt install expect
+# 必须填写default_username&default_password (Must fill in default_username & default_password)
 default_username=""
-#必须填写
 default_password=""
 default_port=22
 msg_list=()
@@ -70,4 +70,5 @@ expect {
 \"*login*\" { interact }
 \"*yes/no*\" { send \"yes\r\";exp_continue }
 \"*password:\" { send \"$password\r\";interact }
+\"*\" { interact }
 }"
