@@ -9,3 +9,4 @@ scripts for shell
 - auto_login.sh 自动登录配置，其实没有ssh-copy-id好用。
 - tmux.conf tmux一些建议配置
 - login_remote.sh 快速登录远程机器，避免多次输入密码。
+- su_user.sh 快速切换账号
