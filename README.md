@@ -10,3 +10,4 @@ scripts for shell
 - tmux.conf tmux一些建议配置
 - login_remote.sh 快速登录远程机器，避免多次输入密码。
 - su_user.sh 快速切换账号
+- condarc conda的配置文件，加快下载. 家目录下添加`.condarc`文件， 执行`conda clean -i` ,然后执行`conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia`
