@@ -137,7 +137,8 @@ set hlsearch                  "检索时高亮匹配项
 set incsearch                "边检索边显示匹配
 
 "格式
-set noexpandtab              "不要将tab转换为空格
+"set noexpandtab              "不要将tab转换为空格
+set expandtab              "将tab转换为空格
 set shiftwidth=4              "自动缩进的距离,也是平移字符的距离
 set tabstop=4                "tab键对应的空格数
 set autoindent                "自动缩进
